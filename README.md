@@ -4,6 +4,10 @@ Djot for users (and for you). A fork of [djot.js](https://github.com/jgm/djot.js
 
 At the moment we don't publish this in NPM, but we may in the future. The intention is to be a drop-in replacement for [djot.js](https://github.com/jgm/djot.js), but we don't currently make an guarentees.
 
+You can find the original djot readme below.
+
+***
+
 # djot.js
 
 A library and command-line tool for parsing and
