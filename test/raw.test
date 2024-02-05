@@ -3,7 +3,7 @@ Raw inline content:
 ```
 `<a>`{=html}
 .
-<p><a></p>
+<p></p>
 ```
 
 Raw block-level content:
@@ -13,7 +13,6 @@ Raw block-level content:
 <table>
 ```
 .
-<table>
 ````
 
 You can't mix regular attributes and raw syntax:
@@ -34,5 +33,4 @@ Attributes attached to raw content will just be ignored:
 <table>
 ```
 .
-<table>
 ````
