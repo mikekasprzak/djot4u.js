@@ -309,9 +309,9 @@ class HTMLRenderer {
 
       case "raw_block": {
         let result = "";
-        if (node.format === "html") {
-          result += node.text;
-        }
+        //if (node.format === "html") {
+        //  result += node.text;
+        //}
         return result;
       }
 
@@ -371,9 +371,9 @@ class HTMLRenderer {
 
       case "raw_inline": {
         let result = "";
-        if (node.format === "html") {
-          result += node.text;
-        }
+        //if (node.format === "html") {
+        //  result += node.text;
+        //}
         return result;
       }
 

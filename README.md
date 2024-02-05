@@ -4,6 +4,14 @@ Djot for users (and for you). A fork of [djot.js](https://github.com/jgm/djot.js
 
 At the moment we don't publish this in NPM, but we may in the future. The intention is to be a drop-in replacement for [djot.js](https://github.com/jgm/djot.js), but we don't currently make an guarentees.
 
+## Changes to djot.js
+* [x] Disabled `{=html}` raw_blocks in the HTML generator.
+* [ ] Disabled all HTML attributes that aren't classes or styles
+
+### Changes we're considering
+* Removing raw_blocks from entirely from the schema (if it can be done while still supporting code blocks)
+* Allowing custom attributes that we can be sure will never execute code (i.e. `x-blah="something"`)
+
 You can find the original djot readme below.
 
 ***
