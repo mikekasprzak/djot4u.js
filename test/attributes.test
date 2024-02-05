@@ -177,7 +177,7 @@ Attributes on different kinds of blocks:
 x = 3
 ```
 .
-<pre highlight="3"><code class="language-ruby">x = 3
+<pre><code class="language-ruby">x = 3
 </code></pre>
 ````
 

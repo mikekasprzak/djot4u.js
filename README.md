@@ -9,15 +9,17 @@ At the moment we don't publish this in NPM, but we may in the future. While djot
 
 ## Changes to djot.js
 * [x] Disabled `{=html}` raw_blocks and inline raw_blocks in the HTML generator
-* [ ] Disabled all HTML attributes except
-  * [ ] classes using CSS notation. e.g. `_some block_{.someClass}`
-  * [ ] `data-*`. e.g. `_some block_{data-list_id="12"}`
+* [x] Disabled all user changable HTML attributes except
+  * [x] CSS `class` and `id` attributes, with support for CSS notation. e.g. `_some block_{.someClass #someId}`
+  * [x] CSS `style` attribute. e.g. `_some block_{style="color: blue;"}`
+  * [x] Custom `data-*` attributes for `dataset`. e.g. `_some block_{data-list_id="12"}`
+  * [x] React `key` attributes
 
-### Changes to djot we're undecided on but considering
+### Changes to djot we're exploring
 * Removing raw_blocks entirely from the schema (breaking compotibility)
-* Allowing other custom attributes (if a strong case can be made)
-  * `name` (using CSS notation)
-  * `style` - _leaning no (or on a flag), as this gives users the means to break the style of the website_
+* If `style` can be disabled for users (so they can't break page styles)
+* If `class` and `id` can be handled implicitly for users (allowing only CSS notation)
+* If `key` can be handled implicitly for users (Its needed to pass the test-suite, but I don't yet know why)
 * Parsing Wikipedia URLs properly in links (i.e. they use nonstandard parenthesis characters in URLs)
 * Changing the behavior of `_` and `*` to only start and end blocks when adjacent to whitespace or punctuation (i.e. not `in_side` words)
 
