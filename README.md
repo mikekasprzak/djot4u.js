@@ -1,16 +1,25 @@
 # djot4u.js
 
-Djot for users (and for you). A fork of [djot.js](https://github.com/jgm/djot.js) attempting to to be safer, disabling features used by XSS attacks.
+Djot for users (and for you). A fork of [djot.js](https://github.com/jgm/djot.js) that attempts to provide safe and sensible changes for websites that allow users to create and post content. We do that by:
 
-At the moment we don't publish this in NPM, but we may in the future. The intention is to be a drop-in replacement for [djot.js](https://github.com/jgm/djot.js), but we don't currently make an guarentees.
+* Disabling features that can be exploited for XSS attacks (raw blocks, most HTML attributes)
+* Limiting CSS styles to only those you provide (i.e. classes)
+
+At the moment we don't publish this in NPM, but we may in the future. While djot4u.js should work as a drop-in replacement for [djot.js](https://github.com/jgm/djot.js), this isn't guarenteed.
 
 ## Changes to djot.js
-* [x] Disabled `{=html}` raw_blocks in the HTML generator.
-* [ ] Disabled all HTML attributes that aren't classes or styles
+* [x] Disabled `{=html}` raw_blocks and inline raw_blocks in the HTML generator
+* [ ] Disabled all HTML attributes except
+  * [ ] classes using CSS notation. e.g. `_some block_{.someClass}`
+  * [ ] `data-*`. e.g. `_some block_{data-list_id="12"}`
 
-### Changes we're considering
-* Removing raw_blocks from entirely from the schema (if it can be done while still supporting code blocks)
-* Allowing custom attributes that we can be sure will never execute code (i.e. `x-blah="something"`)
+### Changes to djot we're undecided on but considering
+* Removing raw_blocks entirely from the schema (breaking compotibility)
+* Allowing other custom attributes (if a strong case can be made)
+  * `name` (using CSS notation)
+  * `style` - _leaning no (or on a flag), as this gives users the means to break the style of the website_
+* Parsing Wikipedia URLs properly in links (i.e. they use nonstandard parenthesis characters in URLs)
+* Changing the behavior of `_` and `*` to only start and end blocks when adjacent to whitespace or punctuation (i.e. not `in_side` words)
 
 You can find the original djot readme below.
 
