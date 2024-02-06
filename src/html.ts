@@ -69,15 +69,12 @@ class HTMLRenderer {
     "type",
     "start",
     "role"
-    /*"rel",
-    "target"*/
   ]
 
   validNodeAttributes : string[] = [
     "id",
     "class",
-    "style",
-    "key"
+    "style"
   ]
 
   renderAttributes(node: HasAttributes, extraAttrs?: Record<string, string>)

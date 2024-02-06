@@ -1,25 +1,17 @@
 # djot4u.js
 
-Djot for users (and for you). A fork of [djot.js](https://github.com/jgm/djot.js) that attempts to provide safe and sensible changes for websites that allow users to create and post content. We do that by:
-
-* Disabling features that can be exploited for XSS attacks (raw blocks, most HTML attributes)
-* Limiting CSS styles to only those you provide (i.e. classes)
+Djot for users (and for you). A fork of [djot.js](https://github.com/jgm/djot.js) that provides safety changes for websites with user generated content. The goal is to give users only the features they need, and to keep nefarious users from exploiting it.
 
 At the moment we don't publish this in NPM, but we may in the future. While djot4u.js should work as a drop-in replacement for [djot.js](https://github.com/jgm/djot.js), this isn't guarenteed.
 
-## Changes to djot.js
-* [x] Disabled `{=html}` raw_blocks and inline raw_blocks in the HTML generator
-* [x] Disabled all user changable HTML attributes except
-  * [x] CSS `class` and `id` attributes, with support for CSS notation. e.g. `_some block_{.someClass #someId}`
+## Changes to djot.js output
+* [x] HTML output ignores raw_block and raw_inline
+* [x] HTML output disregards all attributes except
+  * [x] CSS `class` and `id` attributes with CSS notation. e.g. `_some block_{.someClass #someId}`
   * [x] CSS `style` attribute. e.g. `_some block_{style="color: blue;"}`
   * [x] Custom `data-*` attributes for `dataset`. e.g. `_some block_{data-list_id="12"}`
-  * [x] React `key` attributes
 
 ### Changes to djot we're exploring
-* Removing raw_blocks entirely from the schema (breaking compotibility)
-* If `style` can be disabled for users (so they can't break page styles)
-* If `class` and `id` can be handled implicitly for users (allowing only CSS notation)
-* If `key` can be handled implicitly for users (Its needed to pass the test-suite, but I don't yet know why)
 * Parsing Wikipedia URLs properly in links (i.e. they use nonstandard parenthesis characters in URLs)
 * Changing the behavior of `_` and `*` to only start and end blocks when adjacent to whitespace or punctuation (i.e. not `in_side` words)
 

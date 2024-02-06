@@ -25,13 +25,13 @@ even if the attribute contains a potential closer.
 ```
 a *b{#id key="*"}*
 .
-<p>a <strong><span id="id" key="*">b</span></strong></p>
+<p>a <strong><span id="id">b</span></strong></p>
 ```
 
 ```
 a *b{#id key="*"}o
 .
-<p>a <span id="id" key="*">*b</span>o</p>
+<p>a <span id="id">*b</span>o</p>
 ```
 
 Don't mind braces in quotes:
@@ -39,7 +39,7 @@ Don't mind braces in quotes:
 ```
 hi{key="{#hi"}
 .
-<p><span key="{#hi">hi</span></p>
+<p><span>hi</span></p>
 ```
 
 Process escapes correctly:
@@ -50,8 +50,8 @@ hi{key="\\\\\*"}
 {key="\\\\\*"}
 foo
 .
-<p><span key="\\*">hi</span></p>
-<p key="\\*">foo</p>
+<p><span>hi</span></p>
+<p>foo</p>
 ```
 
 Don't allow attributes to start when we're parsing a potential
@@ -66,13 +66,13 @@ hi\{key="abc{#hi}"
 ```
 hi{key="\"#hi"}
 .
-<p><span key="&quot;#hi">hi</span></p>
+<p><span>hi</span></p>
 ```
 
 ```
 hi{key="hi\"#hi"}
 .
-<p><span key="hi&quot;#hi">hi</span></p>
+<p><span>hi</span></p>
 ```
 
 Line break:
@@ -81,7 +81,7 @@ Line break:
 hi{#id .class
 key="value"}
 .
-<p><span id="id" class="class" key="value">hi</span></p>
+<p><span id="id" class="class">hi</span></p>
 ```
 
 Here there is nothing for the attribute to attach to:
@@ -141,7 +141,7 @@ but classes accumulate:
 {#id2}
 Okay
 .
-<p id="id2" key="val2" class="foo bar baz">Okay</p>
+<p id="id2" class="foo bar baz">Okay</p>
 ```
 
 Attributes on different kinds of blocks:
