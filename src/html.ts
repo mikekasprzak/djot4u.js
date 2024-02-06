@@ -60,6 +60,26 @@ class HTMLRenderer {
     en_dash: "–"
   }
 
+  validExtraAttrs : string[] = [
+    "id",
+    "style",
+    "href",
+    "alt",
+    "src",
+    "type",
+    "start",
+    "role"
+    /*"rel",
+    "target"*/
+  ]
+
+  validNodeAttrs : string[] = [
+    "id",
+    "class",
+    "style",
+    "key"
+  ]
+
   renderAttributes(node: HasAttributes, extraAttrs?: Record<string, string>)
     : string {
     let result  = "";
@@ -71,7 +91,7 @@ class HTMLRenderer {
             v = `${v} ${node.attributes.class}`;
           }
           result += ` ${k}="${this.escapeAttribute(v)}"`;
-        } else if (k === "id" || k === "style" || k === "href" || k === "alt" || k === "src" || k === "type" || k === "start" || k === "role" /*|| k == "target" || k === "rel"*/) {
+        } else if (this.validExtraAttrs.includes(k)) {
           result += ` ${k}="${this.escapeAttribute(extraAttrs[k])}"`;
         }
       }
@@ -79,7 +99,7 @@ class HTMLRenderer {
     if (node.attributes) {
       for (const k in node.attributes) {
         const v = node.attributes[k];
-        if (!(k === "class" && extraAttrs && extraAttrs.class) && k === "id" || k === "class" || k === "style" || k === "key" || k.startsWith("data-")) {
+        if (!(k === "class" && extraAttrs && extraAttrs.class) && this.validNodeAttrs.includes(k) || k.startsWith("data-")) {
           result += ` ${k}="${this.escapeAttribute(v)}"`;
         }
       }
