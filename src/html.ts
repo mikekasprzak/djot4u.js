@@ -60,7 +60,7 @@ class HTMLRenderer {
     en_dash: "–"
   }
 
-  validExtraAttrs : string[] = [
+  validExtraAttributes : string[] = [
     "id",
     "style",
     "href",
@@ -73,7 +73,7 @@ class HTMLRenderer {
     "target"*/
   ]
 
-  validNodeAttrs : string[] = [
+  validNodeAttributes : string[] = [
     "id",
     "class",
     "style",
@@ -91,7 +91,7 @@ class HTMLRenderer {
             v = `${v} ${node.attributes.class}`;
           }
           result += ` ${k}="${this.escapeAttribute(v)}"`;
-        } else if (this.validExtraAttrs.includes(k)) {
+        } else if (this.validExtraAttributes.includes(k)) {
           result += ` ${k}="${this.escapeAttribute(extraAttrs[k])}"`;
         }
       }
@@ -99,7 +99,7 @@ class HTMLRenderer {
     if (node.attributes) {
       for (const k in node.attributes) {
         const v = node.attributes[k];
-        if (!(k === "class" && extraAttrs && extraAttrs.class) && this.validNodeAttrs.includes(k) || k.startsWith("data-")) {
+        if (!(k === "class" && extraAttrs && extraAttrs.class) && this.validNodeAttributes.includes(k) || k.startsWith("data-")) {
           result += ` ${k}="${this.escapeAttribute(v)}"`;
         }
       }
@@ -327,14 +327,6 @@ class HTMLRenderer {
         return result;
       }
 
-      case "raw_block": {
-        let result = "";
-        //if (node.format === "html") {
-        //  result += node.text;
-        //}
-        return result;
-      }
-
       case "str": {
         if (node.attributes) {
           return `${this.renderTag("span", node)}${this.escape(node.text)}</span>`;
@@ -386,14 +378,6 @@ class HTMLRenderer {
         result += this.renderTag("code", node);
         result += this.escape(node.text);
         result += this.renderCloseTag("code");
-        return result;
-      }
-
-      case "raw_inline": {
-        let result = "";
-        //if (node.format === "html") {
-        //  result += node.text;
-        //}
         return result;
       }
 
